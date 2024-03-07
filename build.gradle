@@ -1,18 +1,23 @@
 repositories {
     mavenCentral()
 }
+apply plugin: 'org.sonarqube'
 buildscript {
     repositories {
-        mavenCentral()
+        maven{
+                url "https://plugins.gradle.org/m2/"
+    }
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:1.9.9")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:3.6.7")
+        classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:4.4.1.3373")
     }
 }
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'net.serenity-bdd.aggregator'
+apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
+
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 dependencies {
